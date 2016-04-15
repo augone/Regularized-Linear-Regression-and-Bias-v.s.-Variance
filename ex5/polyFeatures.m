@@ -15,6 +15,9 @@ X_poly = zeros(numel(X), p);
 %
 % 
 
+for iterator = 1:p
+    X_poly(:,iterator) = X(:).^iterator;
+end
 
 
 
