@@ -52,17 +52,13 @@ error_val   = zeros(m, 1);
 %
 
 % ---------------------- Sample Solution ----------------------
-% function [error_train, error_val] = ...
-%     learningCurve(X, y, Xval, yval, lambda)
+function [error_train, error_val] = ...
+    learningCurve(X, y, Xval, yval, lambda)
 for iterator = 1 : m
-    [theta] = trainLinearReg([ones(iterator, 1) X(1:iterator,:)], y(1:iterator), lambda);
-    [Jtrain, gradTrain] = linearRegCostFunction([ones(iterator, 1) X(1:iterator,:)], y(1:iterator), theta, 0);
-    error_train(iterator) = Jtrain;
-    [Jcv, gradcv] = linearRegCostFunction([ones(size(Xval,1), 1) Xval], yval, theta, 0);
-    error_val(iterator) = Jcv;
-    
+    [theta] = trainLinearReg([ones(iterator, 1) X(1:iterator,:)], y(1:iterator), 0);
+    [J, grad] = linearRegCostFunction([ones(m, 1) X], y, theta, 1);
+    error_train(iterator) = 
 end
-
 
 
 
